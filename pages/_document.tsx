@@ -15,8 +15,8 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
+        <Head />
         <body className="selection:bg-primary">
-          <Head />
           <Main />
           <NextScript />
         </body>

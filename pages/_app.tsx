@@ -15,14 +15,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         openGraph={{
           url: METADATA.HOST_URL,
           title: METADATA.TITLE,
-          type: 'website',
+          type: METADATA.OG_TYPE,
           description: METADATA.DESCRIPTION,
           images: [
             {
-              url: METADATA.IMAGE.URL,
-              width: METADATA.IMAGE.WIDTH,
-              height: METADATA.IMAGE.HEIGHT,
-              alt: METADATA.IMAGE.ALT,
+              url: METADATA.OG_IMAGE.URL,
+              width: METADATA.OG_IMAGE.WIDTH,
+              height: METADATA.OG_IMAGE.HEIGHT,
+              alt: METADATA.OG_IMAGE.ALT,
             },
           ],
           locale: METADATA.LOCALE,

@@ -15,7 +15,7 @@ interface Props {
 
 export default function Page(props: Props): ReactElement {
   const { page } = props;
-  const pageTitle = page?.title + ' - Session';
+  const pageTitle = page ? page.title : '';
   return (
     <Layout title={pageTitle}>
       <section>
