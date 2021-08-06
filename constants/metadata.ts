@@ -13,7 +13,9 @@ export interface IMetadata {
 }
 
 const METADATA = {
-  HOST_URL: 'https://getsession.org',
+  // HOST_URL: 'https://getsession.org',
+  // For testing purposes only
+  HOST_URL: 'https://session-website-demo-dlwmkh4kj-yougotwill.vercel.app',
   SITE_NAME: 'Session',
   TITLE: 'Session | Send Messages, Not Metadata. | Private Messenger',
   DESCRIPTION:

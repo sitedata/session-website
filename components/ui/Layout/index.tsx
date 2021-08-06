@@ -33,7 +33,9 @@ export default function Layout({
           description: metadata?.DESCRIPTION ?? METADATA.DESCRIPTION,
           images: [
             {
-              url: metadata?.OG_IMAGE?.URL ?? METADATA.OG_IMAGE.URL,
+              url: `${METADATA.HOST_URL}${
+                metadata?.OG_IMAGE?.URL ?? METADATA.OG_IMAGE.URL
+              }`,
               width: metadata?.OG_IMAGE?.WIDTH ?? METADATA.OG_IMAGE.WIDTH,
               height: metadata?.OG_IMAGE?.HEIGHT ?? METADATA.OG_IMAGE.HEIGHT,
               alt: metadata?.OG_IMAGE?.ALT ?? METADATA.OG_IMAGE.ALT,

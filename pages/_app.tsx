@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           description: METADATA.DESCRIPTION,
           images: [
             {
-              url: METADATA.OG_IMAGE.URL,
+              url: `${METADATA.HOST_URL}${METADATA.OG_IMAGE.URL}`,
               width: METADATA.OG_IMAGE.WIDTH,
               height: METADATA.OG_IMAGE.HEIGHT,
               alt: METADATA.OG_IMAGE.ALT,
