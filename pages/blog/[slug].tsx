@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next';
 import { useRouter } from 'next/router';
-import { formatISO } from 'date-fns';
 
 import { IPost } from '@/types/cms';
 import {
@@ -49,7 +48,7 @@ export default function BlogSlug(props: Props): ReactElement {
           },
           TAGS: post.tags,
           ARTICLE_SECTION: post.tags[0],
-          PUBLISHED_TIME: formatISO(new Date(post.publishedDate)),
+          PUBLISHED_TIME: post.publishedDateISO,
         }}
       >
         <Post {...props} />
