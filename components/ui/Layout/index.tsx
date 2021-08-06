@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo';
 import { Nav, Footer } from '@/components/navigation';
 import { EmailSignup } from '@/components/sections';
 import METADATA, { IMetadata } from '@/constants/metadata';
+import { isLocal } from '@/utils/links';
 
 interface Props {
   title?: string;
@@ -19,6 +20,15 @@ export default function Layout({
 }: Props): ReactElement {
   const router = useRouter();
   const pageUrl = `${METADATA.HOST_URL}${router.asPath}`;
+  const imageUrl = (() => {
+    if (!metadata?.OG_IMAGE?.URL)
+      return `${METADATA.HOST_URL}${METADATA.OG_IMAGE.URL}`;
+    if (metadata?.OG_IMAGE?.URL && isLocal(metadata?.OG_IMAGE?.URL)) {
+      return `${METADATA.HOST_URL}${metadata?.OG_IMAGE?.URL}`;
+    } else {
+      return `${metadata?.OG_IMAGE?.URL}`;
+    }
+  })();
   return (
     <>
       <NextSeo
@@ -33,9 +43,7 @@ export default function Layout({
           description: metadata?.DESCRIPTION ?? METADATA.DESCRIPTION,
           images: [
             {
-              url: `${METADATA.HOST_URL}${
-                metadata?.OG_IMAGE?.URL ?? METADATA.OG_IMAGE.URL
-              }`,
+              url: imageUrl,
               width: metadata?.OG_IMAGE?.WIDTH ?? METADATA.OG_IMAGE.WIDTH,
               height: metadata?.OG_IMAGE?.HEIGHT ?? METADATA.OG_IMAGE.HEIGHT,
               alt: metadata?.OG_IMAGE?.ALT ?? METADATA.OG_IMAGE.ALT,
