@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { GetStaticProps, GetStaticPropsContext, GetStaticPaths } from 'next';
-import { useRouter } from 'next/router';
 
 import { IPost } from '@/types/cms';
 import {
@@ -19,18 +18,6 @@ interface Props {
 }
 
 export default function BlogSlug(props: Props): ReactElement {
-  const router = useRouter();
-  if (router.isFallback) {
-    return (
-      <>
-        <Layout title={'Loading'}>
-          <h1 className={'text-gray font-bold leading-normal '}>
-            Loading page...
-          </h1>
-        </Layout>
-      </>
-    );
-  }
   const { post } = props;
   return (
     <>
@@ -100,6 +87,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   });
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
