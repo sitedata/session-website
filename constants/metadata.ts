@@ -73,7 +73,7 @@ const METADATA = {
     },
   },
   FAQ_PAGE: {
-    TYPE: 'article',
+    TYPE: 'FAQPage',
     DESCRIPTION:
       "Session's FAQ. Find answers to some of the most frequently asked questions about Session — info on the team, the tech, and the technicalities.",
     OG_IMAGE: {

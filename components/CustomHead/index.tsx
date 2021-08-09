@@ -24,14 +24,20 @@ export default function CustomHead(props: Props): ReactElement {
       return `${metadata?.OG_IMAGE?.URL}`;
     }
   })();
+  const tags = metadata?.TAGS ? metadata?.TAGS : METADATA.TAGS;
   const renderTags = (() => {
-    const tags = metadata?.TAGS ? metadata?.TAGS : METADATA.TAGS;
     const keywords = <meta name="keywords" content={tags.join(' ')} />;
     if (metadata?.TYPE !== 'article') return keywords;
     return (
       <>
-        {tags.map((tag) => {
-          return <meta property="article:tag" content={tag} />;
+        {tags.map((tag, index) => {
+          return (
+            <meta
+              key={`article:tag-${pageUrl}-${index}`}
+              property="article:tag"
+              content={tag}
+            />
+          );
         })}
         <meta
           property="article:section"
@@ -47,7 +53,50 @@ export default function CustomHead(props: Props): ReactElement {
       </>
     );
   })();
-
+  const renderLdJSON = (() => {
+    const ldjson = `
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "${METADATA.HOST_URL}/#website",
+        "url": "${pageUrl}",
+        "name": "${METADATA.SITE_NAME}",
+        "description": "${METADATA.DESCRIPTION}",
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "${pageUrl}/#primaryimage",
+        "url": "${imageUrl}",
+        "width": "${String(
+          metadata?.OG_IMAGE?.WIDTH ?? METADATA.OG_IMAGE.WIDTH
+        )}",
+        "height": "${String(
+          metadata?.OG_IMAGE?.HEIGHT ?? METADATA.OG_IMAGE.HEIGHT
+        )}",
+      },
+      {
+        "@type": "WebPage",
+        "@id": "${pageUrl}/#webpage",
+        "url": "${pageUrl}",
+        "inLanguage": "${METADATA.LOCALE}",
+        "name": "${pageTitle}",
+        "isPartOf": { "@id": "${METADATA.HOST_URL}/#website }",
+        "primaryImageOfPage": {
+          "@id": "${pageUrl}/#primaryimage"
+        },
+        "datePublished": "${metadata?.PUBLISHED_TIME ?? ''}",
+        "description": "${METADATA.DESCRIPTION}"
+      }
+    ]`;
+    return (
+      <script
+        key={`ldjson-${pageUrl}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: ldjson }}
+      />
+    );
+  })();
   return (
     <Head>
       <title>{pageTitle}</title>
@@ -132,6 +181,7 @@ export default function CustomHead(props: Props): ReactElement {
       <link rel="alternative" type="application/rss+xml" href="/feed" />
       <link rel="alternative" type="application/atom+xml" href="/feed/atom" />
       <link rel="alternative" type="application/feed+json" href="/feed/json" />
+      {metadata?.TYPE === 'article' && renderLdJSON}
     </Head>
   );
 }
