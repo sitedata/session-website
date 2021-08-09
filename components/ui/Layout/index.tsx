@@ -2,7 +2,7 @@ import { ReactElement, ReactNode } from 'react';
 import { Nav, Footer } from '@/components/navigation';
 import { EmailSignup } from '@/components/sections';
 import { IMetadata } from '@/constants/metadata';
-import SeoHead from '@/components/seo/SeoHead';
+import CustomHead from '@/components/CustomHead';
 
 interface Props {
   title?: string;
@@ -17,7 +17,7 @@ export default function Layout({
 }: Props): ReactElement {
   return (
     <>
-      <SeoHead title={title} metadata={metadata} />
+      <CustomHead title={title} metadata={metadata} />
       <Nav />
       <main>{children}</main>
       <EmailSignup />
