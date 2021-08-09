@@ -55,40 +55,42 @@ export default function CustomHead(props: Props): ReactElement {
   })();
   const renderLdJSON = (() => {
     const ldjson = `
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "${METADATA.HOST_URL}/#website",
-        "url": "${pageUrl}",
-        "name": "${METADATA.SITE_NAME}",
-        "description": "${METADATA.DESCRIPTION}",
-      },
-      {
-        "@type": "ImageObject",
-        "@id": "${pageUrl}/#primaryimage",
-        "url": "${imageUrl}",
-        "width": "${String(
-          metadata?.OG_IMAGE?.WIDTH ?? METADATA.OG_IMAGE.WIDTH
-        )}",
-        "height": "${String(
-          metadata?.OG_IMAGE?.HEIGHT ?? METADATA.OG_IMAGE.HEIGHT
-        )}",
-      },
-      {
-        "@type": "WebPage",
-        "@id": "${pageUrl}/#webpage",
-        "url": "${pageUrl}",
-        "inLanguage": "${METADATA.LOCALE}",
-        "name": "${pageTitle}",
-        "isPartOf": { "@id": "${METADATA.HOST_URL}/#website }",
-        "primaryImageOfPage": {
-          "@id": "${pageUrl}/#primaryimage"
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "${METADATA.HOST_URL}/#website",
+          "url": "${pageUrl}",
+          "name": "${METADATA.SITE_NAME}",
+          "description": "${METADATA.DESCRIPTION}",
         },
-        "datePublished": "${metadata?.PUBLISHED_TIME ?? ''}",
-        "description": "${METADATA.DESCRIPTION}"
-      }
-    ]`;
+        {
+          "@type": "ImageObject",
+          "@id": "${pageUrl}/#primaryimage",
+          "url": "${imageUrl}",
+          "width": "${String(
+            metadata?.OG_IMAGE?.WIDTH ?? METADATA.OG_IMAGE.WIDTH
+          )}",
+          "height": "${String(
+            metadata?.OG_IMAGE?.HEIGHT ?? METADATA.OG_IMAGE.HEIGHT
+          )}",
+        },
+        {
+          "@type": "WebPage",
+          "@id": "${pageUrl}/#webpage",
+          "url": "${pageUrl}",
+          "inLanguage": "${METADATA.LOCALE}",
+          "name": "${pageTitle}",
+          "isPartOf": { "@id": "${METADATA.HOST_URL}/#website }",
+          "primaryImageOfPage": {
+            "@id": "${pageUrl}/#primaryimage"
+          },
+          "datePublished": "${metadata?.PUBLISHED_TIME ?? ''}",
+          "description": "${METADATA.DESCRIPTION}"
+        }
+      ]
+    }`;
     return (
       <script
         key={`ldjson-${pageUrl}`}
