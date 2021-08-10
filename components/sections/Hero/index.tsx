@@ -73,9 +73,7 @@ export default function Hero(): ReactElement {
         </div>
         <Link href="/download">
           <a className="hidden lg:block">
-            <Button classes="mt-4 px-10" shape="square" fontWeight="light">
-              Download
-            </Button>
+            <Button classes="mt-4 px-10">Download</Button>
           </a>
         </Link>
       </div>
