@@ -12,11 +12,11 @@ interface Props {
 
 export default function Headline(props: Props): ReactElement {
   const { color = 'primary', containerWidths, classes, children } = props;
-  const { isMobile, isTablet, isDesktop } = useScreen();
+  const { isMobile, isTablet, isDesktop, isMonitor } = useScreen();
   const containerWidth: string | undefined = (() => {
     if (isMobile) return containerWidths?.sm;
     if (isTablet) return containerWidths?.md;
-    if (isDesktop) return containerWidths?.lg;
+    if (isDesktop || isMonitor) return containerWidths?.lg;
   })();
   const colorClasses = [
     color === 'primary' && 'text-primary',

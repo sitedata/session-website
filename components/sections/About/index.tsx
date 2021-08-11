@@ -28,12 +28,14 @@ export default function About(): ReactElement {
       <Container
         heights={{
           sm: '100vh - 28px',
-          md: '100vh - 28px',
-          lg: '100vh - 28px',
+          md: '100vh + 2rem',
+          lg: '100vh + 2rem',
         }}
-        classes={
-          'flex flex-col justify-center items-center -mt-8 lg:items-start'
-        }
+        classes={classNames(
+          'flex flex-col justify-center items-center -mt-8',
+          'md:-mt-24',
+          'lg:-mt-32 lg:items-start'
+        )}
       >
         <p
           className={classNames(

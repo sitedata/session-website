@@ -25,6 +25,7 @@ export default function Benefits(): ReactElement {
           sm: '100%',
           md: '100%',
           lg: '100vh + 4rem',
+          xl: '100vh - 84px',
         }}
         classes={classNames(
           'px-4 lg:max-w-none',
@@ -35,7 +36,8 @@ export default function Benefits(): ReactElement {
           className={classNames(
             'flex flex-wrap justify-center items-center -mx-3 max-w-screen-md',
             'md:mx-auto',
-            'lg:max-w-screen-xl lg:pt-16'
+            'lg:max-w-screen-xl lg:pt-16',
+            '2xl:-mt-48'
           )}
         >
           <BenefitsCard

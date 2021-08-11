@@ -27,7 +27,7 @@ export default function Hero(): ReactElement {
       >
         <div
           className={classNames(
-            'lg:flex lg:justify-center lg:items-center',
+            'lg:-mt-16 lg:flex lg:justify-center lg:items-center',
             '2xl:-mt-64'
           )}
         >

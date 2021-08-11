@@ -15,8 +15,9 @@ export function useScreenSize() {
     const _isMobile = width <= UI.MOBILE_BREAKPOINT;
     const _isTablet =
       width > UI.MOBILE_BREAKPOINT && width <= UI.TABLET_BREAKPOINT;
-    const _isDesktop = width > UI.TABLET_BREAKPOINT;
-    const _isMonitor = width > UI.DESKTOP_BREAKPOINT;
+    const _isDesktop =
+      width > UI.TABLET_BREAKPOINT && width < UI.MONITOR_BREAKPOINT;
+    const _isMonitor = width >= UI.MONITOR_BREAKPOINT;
 
     if (isMobile !== _isMobile) setIsMobile(_isMobile);
     if (isTablet !== _isTablet) setIsTablet(_isTablet);
