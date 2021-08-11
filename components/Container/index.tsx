@@ -19,9 +19,9 @@ export default function Container(props: Props): ReactElement {
   return (
     <div
       className={classNames(
-        'container mx-auto mt-12 max-w-6xl p-6',
+        'container mx-auto max-w-6xl p-6',
         'md:p-12',
-        'lg:my-0 lg:py-0 lg:px-10',
+        'lg:py-0 lg:px-10',
         classes
       )}
       style={{ height: height && `calc(${height.lg})` }}

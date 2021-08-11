@@ -20,7 +20,10 @@ export default function Hero(): ReactElement {
     <section>
       <Container
         height={{ sm: '100%', md: '100%', lg: '100vh - 112px' }}
-        classes={'lg:flex lg:flex-col lg:justify-center lg:items-center'}
+        classes={classNames(
+          'mt-12',
+          'lg:my-0 lg:flex lg:flex-col lg:justify-center lg:items-center'
+        )}
       >
         <div
           className={classNames(

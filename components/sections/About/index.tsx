@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import classNames from 'classnames';
 import redact from '@/utils/redact';
 
+import Container from '@/components/Container';
 import { Headline } from '@/components/ui';
 
 export default function About(): ReactElement {
@@ -12,29 +13,33 @@ export default function About(): ReactElement {
     classes: 'p-1',
   });
   return (
-    <section
-      className={classNames(
-        'bg-gray-dark text-white',
-        'lg:min-h-screen lg:pb-4'
-      )}
-    >
-      <div
-        className={classNames('container pt-6 pb-20 px-7 mx-auto', 'md:p-12')}
+    <section className="text-white bg-gray-dark">
+      <Headline
+        classes={classNames('text-lg font-semibold pt-16', 'lg:pt-20')}
+        containerWidths={{
+          sm: '10rem',
+          md: '34rem',
+          lg: '67rem',
+        }}
       >
-        <Headline
-          classes={classNames(
-            'text-lg font-semibold mt-8 mb-20 ',
-            'md:mb-16',
-            'lg:mt-4'
-          )}
-        >
-          What is Session?
-        </Headline>
+        What is Session?
+      </Headline>
+      {/* Full screen height - Headline height */}
+      <Container
+        height={{
+          sm: '100vh - 28px',
+          md: '100vh - 28px',
+          lg: '100vh - 28px',
+        }}
+        classes={
+          'flex flex-col justify-center items-center -mt-8 lg:items-start'
+        }
+      >
         <p
           className={classNames(
             'group text-white text-lg font-light leading-10 my-12',
             'md:text-4xl md:leading-relaxed md:ml-16',
-            'lg:mt-48 lg:mb-10 lg:ml-14 lg:max-w-2xl'
+            'lg:my-0 lg:ml-0 lg:max-w-2xl'
           )}
         >
           Session is an <span className={redactedClasses}>end-to-end</span>{' '}
@@ -45,7 +50,7 @@ export default function About(): ReactElement {
           freedom from <span className={redactedClasses}>any form of</span>{' '}
           surveillance.
         </p>
-      </div>
+      </Container>
     </section>
   );
 }
