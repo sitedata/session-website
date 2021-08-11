@@ -4,20 +4,13 @@ import { IContainerSizes } from '@/components/Container';
 
 interface Props {
   color?: 'primary' | 'gray-dark';
-  hideLineOnMobile?: boolean;
   containerWidths?: IContainerSizes;
   classes?: string;
   children?: string;
 }
 
 export default function Headline(props: Props): ReactElement {
-  const {
-    color = 'primary',
-    hideLineOnMobile = false,
-    containerWidths,
-    classes,
-    children,
-  } = props;
+  const { color = 'primary', containerWidths, classes, children } = props;
   const containerWidth = containerWidths?.lg; // TODO use Screen hook to check size
   const colorClasses = [
     color === 'primary' && 'text-primary',
@@ -30,11 +23,7 @@ export default function Headline(props: Props): ReactElement {
   return (
     <div className={classNames('flex items-start', classes)}>
       <div
-        className={classNames(
-          `border-t mt-2 ml-3`,
-          borderClasses,
-          hideLineOnMobile && 'hidden md:inline'
-        )}
+        className={classNames(`border-t mt-2 ml-3`, borderClasses)}
         style={{ width: `calc((100vw - ${containerWidth}) / 2)` }}
         // mobile style with screenhook
         // style={{ width: `calc((100vw - ${containerWidth}))` }}
@@ -47,13 +36,9 @@ export default function Headline(props: Props): ReactElement {
           {children}
         </div>
       </div>
-      {/* TODO extend functionality */}
       <div
         className={classNames(
-          `border-t mt-2 mr-3`,
-          borderClasses,
-          'border-none',
-          hideLineOnMobile && 'hidden md:inline'
+          `mt-2 mr-3`
           // mobile style with screenhook
           // 'hidden'
         )}
