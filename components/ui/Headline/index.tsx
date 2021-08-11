@@ -37,11 +37,7 @@ export default function Headline(props: Props): ReactElement {
         </div>
       </div>
       <div
-        className={classNames(
-          `mt-2 mr-3`
-          // mobile style with screenhook
-          // 'hidden'
-        )}
+        className={classNames(`hidden mt-2 mr-3`, 'md:block')}
         style={{ width: `calc((100vw - ${containerWidth}) / 2)` }}
       ></div>
     </div>
