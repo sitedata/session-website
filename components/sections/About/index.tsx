@@ -26,7 +26,7 @@ export default function About(): ReactElement {
       </Headline>
       {/* Full screen height - Headline height */}
       <Container
-        height={{
+        heights={{
           sm: '100vh - 28px',
           md: '100vh - 28px',
           lg: '100vh - 28px',

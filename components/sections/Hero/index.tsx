@@ -19,7 +19,7 @@ export default function Hero(): ReactElement {
   return (
     <section>
       <Container
-        height={{ sm: '100%', md: '100%', lg: '100vh - 112px' }}
+        heights={{ sm: '100%', md: '100%', lg: '100vh - 112px' }}
         classes={classNames(
           'mt-12',
           'lg:my-0 lg:flex lg:flex-col lg:justify-center lg:items-center'

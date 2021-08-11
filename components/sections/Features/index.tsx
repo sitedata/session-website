@@ -27,7 +27,7 @@ export default function Features(): ReactElement {
         Features
       </Headline>
       <Container
-        height={{
+        heights={{
           sm: '100%',
           md: '100%',
           lg: '100vh - 28px',

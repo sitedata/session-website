@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 import classNames from 'classnames';
+import { useScreen } from '@/contexts/screen';
 
 export interface IContainerSizes {
   sm: string;
@@ -8,14 +9,19 @@ export interface IContainerSizes {
 }
 
 interface Props {
-  height?: IContainerSizes;
+  heights?: IContainerSizes;
   classes?: string;
   children: ReactNode;
 }
 
 export default function Container(props: Props): ReactElement {
-  const { height, classes, children } = props;
-  // TODO Add screenhook support
+  const { heights, classes, children } = props;
+  const { isMobile, isTablet, isDesktop } = useScreen();
+  const height: string | undefined = (() => {
+    if (isMobile) return heights?.sm;
+    if (isTablet) return heights?.md;
+    if (isDesktop) return heights?.lg;
+  })();
   return (
     <div
       className={classNames(
@@ -24,7 +30,7 @@ export default function Container(props: Props): ReactElement {
         'lg:py-0 lg:px-10',
         classes
       )}
-      style={{ height: height && `calc(${height.lg})` }}
+      style={{ height: height && `calc(${height})` }}
     >
       {children}
     </div>

@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import classNames from 'classnames';
 import { IContainerSizes } from '@/components/Container';
+import { useScreen } from '@/contexts/screen';
 
 interface Props {
   color?: 'primary' | 'gray-dark';
@@ -11,7 +12,12 @@ interface Props {
 
 export default function Headline(props: Props): ReactElement {
   const { color = 'primary', containerWidths, classes, children } = props;
-  const containerWidth = containerWidths?.lg; // TODO use Screen hook to check size
+  const { isMobile, isTablet, isDesktop } = useScreen();
+  const containerWidth: string | undefined = (() => {
+    if (isMobile) return containerWidths?.sm;
+    if (isTablet) return containerWidths?.md;
+    if (isDesktop) return containerWidths?.lg;
+  })();
   const colorClasses = [
     color === 'primary' && 'text-primary',
     color === 'gray-dark' && 'text-gray-dark',
@@ -24,9 +30,11 @@ export default function Headline(props: Props): ReactElement {
     <div className={classNames('flex items-start', classes)}>
       <div
         className={classNames(`border-t mt-2 ml-3`, borderClasses)}
-        style={{ width: `calc((100vw - ${containerWidth}) / 2)` }}
-        // mobile style with screenhook
-        // style={{ width: `calc((100vw - ${containerWidth}))` }}
+        style={{
+          width: isMobile
+            ? `calc((100vw - ${containerWidth}))`
+            : `calc((100vw - ${containerWidth}) / 2)`,
+        }}
       ></div>
       <div className={'mx-6'}>
         <div

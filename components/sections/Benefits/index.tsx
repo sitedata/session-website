@@ -21,7 +21,7 @@ export default function Benefits(): ReactElement {
         Benefits
       </Headline>
       <Container
-        height={{
+        heights={{
           sm: '100%',
           md: '100%',
           lg: '100vh + 4rem',
