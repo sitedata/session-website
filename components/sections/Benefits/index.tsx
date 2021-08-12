@@ -24,7 +24,7 @@ export default function Benefits(): ReactElement {
         heights={{
           sm: '100%',
           md: '100%',
-          lg: '100vh + 4rem',
+          lg: '100%',
           xl: '100vh - 84px',
         }}
         classes={classNames(

@@ -44,7 +44,8 @@ export default function Download(): ReactElement {
           classes={classNames(
             'px-0 py-0',
             'md:px-0 md:py-0',
-            'lg:mb-4 lg:pl-0 lg:pr-0 lg:flex lg:max-w-none'
+            'lg:-mt-4 lg:mb-4 lg:pl-0 lg:pr-0 lg:flex lg:max-w-none',
+            '2xl: mt-0'
           )}
         >
           <div
@@ -61,7 +62,15 @@ export default function Download(): ReactElement {
                 '2xl:w-1/2 2xl:mr-24'
               )}
             >
-              <p className={classNames(subtitleClasses, 'pt-20')}>
+              <p
+                className={classNames(
+                  subtitleClasses,
+                  'pt-20',
+                  'lg:pt-20',
+                  'xl:pt-8',
+                  '2xl:pt-20'
+                )}
+              >
                 Download Session for
               </p>
               <h2 className={classNames('text-5xl font-semibold my-4')}>
@@ -170,7 +179,15 @@ export default function Download(): ReactElement {
                 '2xl:w-1/2 2xl:ml-24'
               )}
             >
-              <p className={classNames(subtitleClasses, 'pt-32', 'lg:pt-20')}>
+              <p
+                className={classNames(
+                  subtitleClasses,
+                  'pt-32',
+                  'lg:pt-20',
+                  'xl:pt-8',
+                  '2xl:pt-20'
+                )}
+              >
                 Download Session for
               </p>
               <h2

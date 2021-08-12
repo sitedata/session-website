@@ -59,7 +59,12 @@ export default function Features(): ReactElement {
             />
           </div>
           <div
-            className={classNames('px-3', 'md:max-w-xl', 'lg:max-w-sm lg:px-0')}
+            className={classNames(
+              'px-3',
+              'md:max-w-xl',
+              'lg:max-w-sm lg:px-0 lg:-mt-8',
+              '2xl:mt-0'
+            )}
           >
             <h3 className={headingClasses}>Group chats</h3>
             <p className={paragraphClasses}>
